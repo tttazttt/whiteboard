@@ -161,6 +161,10 @@ const Whiteboard = () => {
   ) => {
     if (!isDrawing || !ctxRef.current) return;
 
+    if ("touches" in e) {
+      e.preventDefault();
+    }
+
     const x = "touches" in e ? e.touches[0].clientX : e.nativeEvent.offsetX;
     const y = "touches" in e ? e.touches[0].clientX : e.nativeEvent.offsetY;
 
