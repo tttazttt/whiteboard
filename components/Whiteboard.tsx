@@ -77,7 +77,6 @@ const Whiteboard = () => {
       if (socketRef.current) {
         socketRef.current.off("history");
         socketRef.current.off("drawing");
-        socketRef.current.off("drawingStart");
         socketRef.current?.disconnect();
       }
     };
@@ -166,7 +165,7 @@ const Whiteboard = () => {
     }
 
     const x = "touches" in e ? e.touches[0].clientX : e.nativeEvent.offsetX;
-    const y = "touches" in e ? e.touches[0].clientX : e.nativeEvent.offsetY;
+    const y = "touches" in e ? e.touches[0].clientY : e.nativeEvent.offsetY;
 
     if (isEraser) {
       ctxRef.current.clearRect(x - 10, y - 10, 20, 20);
